@@ -21,6 +21,10 @@
       href="https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="./css/all.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
@@ -28,29 +32,135 @@
   </head>
   <body>
     <main class="container d-flex flex-column">
-      <h1 class="text-center pacifio-font">Bookmarker</h1>
+      <h1
+        class="title text-center pacifio-font mt-5 position-relative align-self-center fs-50"
+      >
+        Bookmarker
+      </h1>
       <br />
       <hr />
       <br />
-      <div class="gradient text-center">
-        <i class="fa-solid fa-bookmark fs-3"></i>
-        <h2 class="d-inline righteous-font">Bookmark your favorite sites</h2>
-        <i class="fa-solid fa-bookmark fs-3"></i>
+      <div
+        class="gradient text-center align-self-center"
+        style="width: fit-content"
+      >
+        <i class="fa-solid fa-bookmark fs-4"></i>
+        <h2 class="d-inline righteous-font fs-4">
+          Bookmark your favorite sites
+        </h2>
+        <i class="fa-solid fa-bookmark fs-4"></i>
       </div>
-      <form action="">
-        <label for="site-name">Site Name</label>
+      <br />
+      <form action="" class="inputs d-flex flex-column">
+        <label for="site-name"
+          ><i class="fa-solid fa-book-bookmark"></i> Site Name</label
+        >
         <br />
         <input
           type="text"
           name="site-name"
           id="site-name"
           class="form-control"
+          placeholder="Bookmark Name"
+          oninput="validateSiteName()"
+          required
         />
         <br />
-        <label for="site-url">Site URL</label>
+        <label for="site-url"> <i class="fa-solid fa-link"></i> Site URL</label>
         <br />
-        <input type="text" name="site-url" id="site-url" class="form-control" />
+        <input
+          type="text"
+          name="site-url"
+          id="site-url"
+          class="form-control"
+          placeholder="Website URL"
+          oninput="validateSiteUrl()"
+          required
+        />
+        <br />
+        <button
+          type="button"
+          id="submit-btn"
+          class="submit-btn btn btn-primary align-self-center px-5"
+          data-bs-target="#errorModal"
+          onclick="addUrl()"
+        >
+          Submit
+        </button>
       </form>
+      <br />
+      <!--  -->
+
+      <!-- Modal -->
+      <div id="mod-container">
+        <div
+          class="modal fade"
+          id="errorModal"
+          tabindex="-1"
+          aria-labelledby="errorModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+              <div class="modal-header">
+                <div class="d-flex gap-2">
+                  <div
+                    class="circle rounded-circle"
+                    style="background-color: #f15f5d"
+                  ></div>
+                  <div
+                    class="circle rounded-circle"
+                    style="background-color: #febe2e"
+                  ></div>
+                  <div
+                    class="circle rounded-circle"
+                    style="background-color: #4db748"
+                  ></div>
+                </div>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <p class="fw-semibold fs-5">
+                  Site Name or Url is not valid, Please follow the rules below :
+                </p>
+                <ul class="list-unstyled ps-3">
+                  <li class="d-flex gap-2 align-items-center fs-6">
+                    <i class="fa-regular fa-circle-right text-danger"></i>
+                    <p class="m-0">
+                      Site name must contain at least 3 characters
+                    </p>
+                  </li>
+                  <li class="d-flex gap-2 align-items-center fs-6">
+                    <i class="fa-regular fa-circle-right text-danger"></i>
+                    <p class="m-0">Site URL must be a valid one</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+
+      <hr />
+      <br />
+
+      <table class="text-center bg-light rounded-3">
+        <thead class="table-headings">
+          <tr class="">
+            <th class="rounded-start">index</th>
+            <th>Website Name</th>
+            <th>Visit</th>
+            <th class="rounded-end">Delete</th>
+          </tr>
+        </thead>
+        <tbody class="table-bookmarks" id="table-bookmarks"></tbody>
+      </table>
     </main>
   </body>
 </html>

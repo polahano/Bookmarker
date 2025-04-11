@@ -1,14 +1,23 @@
 body {
   background-color: #f7ecde;
+  font-family: "PT Sans Caption", sans-serif;
+}
+
+::selection {
+  color: black;
+  background: rgba(255, 195, 85, 0.879);
 }
 
 hr {
 }
 
-div.gradient {
-  background-image: linear-gradient(to right, #3ca55c, #b5ac49);
-  color: transparent;
-  background-clip: text;
+th {
+  padding-block: 15px;
+  background-color: #fec260;
+}
+
+.fs-50 {
+  font-size: 3rem;
 }
 
 .pacifio-font {
@@ -17,4 +26,72 @@ div.gradient {
 
 .righteous-font {
   font-family: "Righteous", sans-serif;
+}
+
+div.gradient {
+  background-image: linear-gradient(to right, #3ca55c, #b5ac49);
+  color: transparent;
+  background-clip: text;
+}
+
+.form-control:focus {
+  border-color: orange;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(255, 213, 134, 0.825);
+}
+
+main form.inputs button.submit-btn {
+  background-color: #de4419;
+  border: none;
+}
+
+main form.inputs button.submit-btn:hover {
+  background-color: #b83916;
+  border: none;
+}
+
+main form.inputs button.submit-btn:active,
+table tbody tr button:active {
+  background-color: transparent;
+  border: 1px black solid;
+  color: black;
+}
+
+td {
+  padding-block: 10px;
+}
+
+div.modal div.modal-dialog div.circle {
+  height: 20px;
+  width: 20px;
+}
+
+div.modal-header {
+  border-bottom: none;
+}
+
+main h1.title {
+  width: fit-content;
+}
+
+main h1.title::after {
+  content: " ";
+  display: block;
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-color: #fec260;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+
+main h1.title:hover::after {
+  content: " ";
+  height: 35px;
 }
