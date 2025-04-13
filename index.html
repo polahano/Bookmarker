@@ -31,6 +31,53 @@
     <script src="./js/main.js" defer></script>
   </head>
   <body>
+    <div
+      id="modal"
+      class="gray-layer vh-100 w-100 d-none flex-column justify-content-center align-items-center position-fixed z-2"
+    >
+      <div class="modal-content bg-white rounded-3 p-4" style="width: 30%">
+        <div class="modal-header">
+          <div class="d-flex gap-2">
+            <div
+              class="circle rounded-circle"
+              style="background-color: #f15f5d"
+            ></div>
+            <div
+              class="circle rounded-circle"
+              style="background-color: #febe2e"
+            ></div>
+            <div
+              class="circle rounded-circle"
+              style="background-color: #4db748"
+            ></div>
+          </div>
+          <button
+            type="button"
+            class="btn-close"
+            id="btn-close"
+            onclick="closeModal()"
+            aria-label="Close"
+          ></button>
+        </div>
+        <br />
+        <div class="modal-body">
+          <p class="fw-medium fs-5">
+            Site Name or Url is not valid, Please follow the rules below :
+          </p>
+          <ul class="list-unstyled ps-3">
+            <li class="d-flex gap-2 align-items-center fs-6 my-1">
+              <i class="fa-regular fa-circle-right text-danger"></i>
+              <p class="m-0">Site name must contain at least 3 characters</p>
+            </li>
+            <li class="d-flex gap-2 align-items-center fs-6">
+              <i class="fa-regular fa-circle-right text-danger"></i>
+              <p class="m-0">Site URL must be a valid one</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <main class="container d-flex flex-column">
       <h1
         class="title text-center pacifio-font mt-5 position-relative align-self-center fs-50"
@@ -82,18 +129,15 @@
           type="button"
           id="submit-btn"
           class="submit-btn btn btn-primary align-self-center px-5"
-          data-bs-target="#errorModal"
           onclick="addUrl()"
         >
           Submit
         </button>
       </form>
       <br />
-      <!--  -->
 
       <!-- Modal -->
-      <div id="mod-container">
-        <div
+      <!-- <div
           class="modal fade"
           id="errorModal"
           tabindex="-1"
@@ -143,9 +187,7 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <!--  -->
+        </div> -->
 
       <hr />
       <br />
@@ -153,7 +195,7 @@
       <table class="text-center bg-light rounded-3">
         <thead class="table-headings">
           <tr class="">
-            <th class="rounded-start">index</th>
+            <th class="rounded-start">Index</th>
             <th>Website Name</th>
             <th>Visit</th>
             <th class="rounded-end">Delete</th>

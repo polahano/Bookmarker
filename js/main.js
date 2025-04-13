@@ -4,8 +4,8 @@
 var siteNameInput = document.getElementById("site-name");
 var siteUrlInput = document.getElementById("site-url");
 var submitButton = document.getElementById("submit-btn");
-var modalContainer = document.getElementById("mod-container");
 var tableBookmarks = document.getElementById("table-bookmarks");
+// var modalContainer = document.getElementById("mod-container");
 var isSiteNameValid;
 var isSiteUrlValid;
 var bookmarkList = [];
@@ -24,10 +24,10 @@ function validateSiteName() {
   if (siteName) {
     if (isSiteNameValid) {
       siteNameInput.classList.add("is-valid")
-      siteNameInput.classList.replace("is-invalid", "is-valid")
+      siteNameInput.classList.remove("is-invalid")
     } else {
       siteNameInput.classList.add("is-invalid")
-      siteNameInput.classList.replace("is-valid", "is-invalid")
+      siteNameInput.classList.remove("is-valid")
     }
   } else {
     siteNameInput.classList.remove("is-valid", "is-invalid");
@@ -43,13 +43,13 @@ function validateSiteUrl() {
   if (siteUrl) {
     if (isSiteUrlValid) {
       siteUrlInput.classList.add("is-valid")
-      siteUrlInput.classList.replace("is-invalid", "is-valid")
+      siteUrlInput.classList.remove("is-invalid")
     } else {
       siteUrlInput.classList.add("is-invalid")
-      siteUrlInput.classList.replace("is-valid", "is-invalid")
+      siteUrlInput.classList.remove("is-valid")
     }
   } else {
-    siteNameInput.classList.remove("is-valid", "is-invalid");
+    // siteNameInput.classList.remove("is-valid", "is-invalid");
     siteUrlInput.classList.remove("is-valid", "is-invalid");
   }
   return isSiteUrlValid;
@@ -58,7 +58,9 @@ function validateSiteUrl() {
 function addUrl() {
 
   if (isSiteNameValid && isSiteUrlValid) {
-    submitButton.setAttribute("data-bs-toggle", "");
+    // submitButton.setAttribute("data-bs-toggle", "");
+    // submitButton.setAttribute("data-bs-target", "");
+    document.getElementById("modal").classList.replace("d-flex", "d-none");
     var bookmark = {
       name: "",
       url: ""
@@ -72,7 +74,10 @@ function addUrl() {
     clearInput()
 
   } else {
-    submitButton.setAttribute("data-bs-toggle", "modal")
+    // submitButton.setAttribute("data-bs-toggle", "modal")
+    // submitButton.setAttribute("data-bs-target", "#errorModal")
+    document.getElementById("modal").classList.replace("d-none", "d-flex");
+
   }
 
 }
@@ -125,4 +130,9 @@ function deleteBookmark(index) {
   bookmarkList.splice(index, 1);
   localStorage.setItem("bookmarkList", JSON.stringify(bookmarkList))
   displayTable();
+}
+
+
+function closeModal() {
+  document.getElementById("modal").classList.replace("d-flex", "d-none");
 }
